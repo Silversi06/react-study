@@ -26,7 +26,11 @@ const riize = [
 ]
 
 const riizeList = <ul>
-    {riize.name }
+    {
+        riize.map(u => {
+            return <li>{u.isKorean ? "안녕하세요": "welcome"}+{u.name}</li>
+        })
+    }
 </ul>
 
 root.render(<div>
@@ -41,6 +45,11 @@ root.render(<div>
         isEven(number2) ? <h1>짝수</h1> :<h1>홀수</h1>
 
     }
+    {
+        <p style={{ color: "yellow", fontSize: "20px"}}>Hello!</p>
+
+    }
+    {riizeList}
 
 
     
