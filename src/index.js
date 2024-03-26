@@ -2,4 +2,4 @@
 // import './component-intermediate/sol_user-profile'
 // import './component-intermediate/state-study-3'
 // import './test/test2.js'
-import './component-intermediate/counter-with-hook-caveat'
+import './component-intermediate/manipulate-list'
