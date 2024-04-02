@@ -49,6 +49,13 @@ function TodoApp(props){
 
     //hangleTodoRemove 함수 추가, 그 함수에는 제거할 위치를 주면 해당 위치에 있는 할 일 제거
     //filter써야 되고, filter((item, index) => ...)
+    // const handleTodoRemove = todoIndex => {
+    //     setTodos(todos) => {
+    //         return todos.filter((idx) => {
+    //             return idx !== todoIndex
+    //         })
+    //     }
+    // }
 
 
     return(<div>
