@@ -3,4 +3,6 @@
 // import './component-intermediate/state-study-3'
 // import './test/test2.js'
 // import './component-intermediate/manipulate-list'
-import './component-intermediate/todo-app-demo'
+// import './component-intermediate/todo-app-demo'
+// import './게시물 댓글달기 컴포넌트/index'
+import './use-effect-demo/use-effect-intro'

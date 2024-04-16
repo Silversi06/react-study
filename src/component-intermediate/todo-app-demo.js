@@ -21,16 +21,16 @@ function TodoAdder({handleTodoAdd}){
     )
 }
 
-function TodoItem({todo}){
+function TodoItem({todo, handleTodoRemove, index ,handleTodoStatusToggle}){
     
-    return <li>{todo.text}  <button>X</button></li>
+    return <li> <span onClick={() =>handleTodoStatusToggle(index)}style={todo.completed ? { textDecoration:"line-through" } : null}> {todo.text} </span> <button onClick={() => handleTodoRemove(index)}>X</button></li>
 }
 
-function TodoList({todos}){
+function TodoList({todos, handleTodoRemove, handleTodoStatusToggle}){
     return <ul>
         {
-            todos.map(item => {
-                return <TodoItem todo={item} />
+            todos.map((todo, index) => {
+                return <TodoItem todo={todo}  handleTodoRemove={handleTodoRemove} handleTodoStatusToggle={handleTodoStatusToggle} index={index}/>
             })
         }
     </ul>
@@ -46,27 +46,17 @@ function TodoApp(props){
     //handleTodoAdd 함수를 정의하고, 새로운 todo 객체를 받아서 todos 에 추가할 수 있도록 하기
     //(setTodos를 써야할 것이고 concat 도 써야할 것)
     const handleTodoAdd = todo => setTodos(todos => todos.concat(todo));
-
-    //hangleTodoRemove 함수 추가, 그 함수에는 제거할 위치를 주면 해당 위치에 있는 할 일 제거
-    //filter써야 되고, filter((item, index) => ...)
-    // const handleTodoRemove = todoIndex => {
-    //     setTodos(todos) => {
-    //         return todos.filter((idx) => {
-    //             return idx !== todoIndex
-    //         })
-    //     }
-    // }
-
+    const handleTodoRemove = i => setTodos(todos.filter((item,index)=> i !== index))
+    //handle TodoStatasToggle를 필수로 만들고 index받아서 map을 해서 해당index에있는 complete 상태를 토글(true=>false, false)
+    const handleTodoStatusToggle = i => setTodos(todos.map((item,index)=>{
+        if(i === index){
+            item = {...item, completed : !item.completed}
+        }
+        return item
+    }))
 
     return(<div>
-        <ul>
-            {
-                todos.map((todos)=> {
-                    return <li>{todos.text}</li>
-                })
-            }     
-        </ul>
-        <TodoList todos={todos} />
+        <TodoList todos={todos}  handleTodoRemove={handleTodoRemove} handleTodoStatusToggle={handleTodoStatusToggle}/>
         <TodoAdder handleTodoAdd={handleTodoAdd} />
     </div>
     )
